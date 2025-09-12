@@ -5,32 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Surprise Awaits... 🌹</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Dancing+Script&family=Caveat&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --pink: #FFD6E8;
-      --rose: #E63946;
-      --white: #ffffff;
-    }
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      min-height: 100vh;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, var(--pink), #fff);
+      box-sizing: border-box;
+      background: linear-gradient(180deg, #FFD6E8, #fff);
+    }
+    /* Generic hidden style */
+    .hidden { display: none !important; }
+    /* ---------- INDEX PAGE ---------- */
+    #page-index {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      left: 0; top: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      background: linear-gradient(180deg, #FFD6E8, #fff);
+      z-index: 5;
       text-align: center;
       overflow: hidden;
-      position: relative;
     }
     .container {
       max-width: 800px;
       padding: 20px;
+      background: transparent;
     }
     h1 {
       font-size: 1.6rem;
-      color: var(--rose);
+      color: #E63946;
       margin-bottom: 25px;
       font-weight: 600;
     }
@@ -41,7 +49,7 @@
       margin-bottom: 30px;
     }
     .countdown div {
-      background: var(--white);
+      background: #fff;
       padding: 15px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -51,7 +59,7 @@
       display: block;
       font-size: 1.5rem;
       font-weight: bold;
-      color: var(--rose);
+      color: #E63946;
     }
     .countdown div small {
       color: #555;
@@ -59,18 +67,18 @@
     }
     .btn {
       display: inline-block;
-      background: grey; /* initially disabled */
-      color: var(--white);
+      background: grey;
+      color: #fff;
       padding: 12px 24px;
       font-size: 1rem;
       border-radius: 30px;
       text-decoration: none;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       transition: 0.3s;
-      pointer-events: none; /* disabled */
+      pointer-events: none;
     }
     .btn.active {
-      background: var(--rose);
+      background: #E63946;
       pointer-events: auto;
       animation: glow 1.5s infinite alternate;
     }
@@ -81,7 +89,6 @@
       0% { box-shadow: 0 0 5px #ff4d6d, 0 0 10px #ff4d6d; }
       100% { box-shadow: 0 0 15px #ff4d6d, 0 0 25px #ff4d6d; }
     }
-    /* Cute note */
     .note {
       margin-top: 15px;
       font-size: 1rem;
@@ -98,10 +105,11 @@
       position: absolute;
       width: 20px;
       height: 20px;
-      background: var(--rose);
+      background: #E63946;
       border-radius: 50%;
       opacity: 0.7;
       animation: fall linear infinite;
+      z-index: 2;
     }
     @keyframes fall {
       0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.9; }
@@ -114,7 +122,7 @@
       right: 20px;
       padding: 12px 20px;
       font-size: 1rem;
-      background: var(--rose);
+      background: #E63946;
       color: #fff;
       border: none;
       border-radius: 25px;
@@ -126,37 +134,614 @@
     #play-btn:hover {
       background: #c72c3a;
     }
+    /* ---------- CAKE PAGE ---------- */
+    #page-cake {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      left: 0; top: 0;
+      background: linear-gradient(to top, #fceabb, #f8b500);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      z-index: 10;
+    }
+    .cake-container {
+      position: relative;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      z-index: 1;
+    }
+    .cake-layer {
+      border-radius: 20px;
+      margin: 5px 0;
+      position: relative;
+    }
+    .layer-bottom {
+      width: 250px;
+      height: 80px;
+      background: #d2691e;
+    }
+    .layer-middle {
+      width: 180px;
+      height: 70px;
+      background: #ffb6c1;
+    }
+    .layer-top {
+      width: 120px;
+      height: 60px;
+      background: #fffacd;
+    }
+    .candle {
+      position: absolute;
+      top: -40px;
+      width: 10px;
+      height: 40px;
+      background: #ff0000;
+      border-radius: 2px;
+      animation: flicker 1s infinite alternate;
+      cursor: pointer;
+    }
+    .flame {
+      position: absolute;
+      top: -15px;
+      left: -2px;
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(circle, yellow, orange, red);
+      border-radius: 50%;
+      animation: flicker-flame 0.5s infinite alternate;
+    }
+    @keyframes flicker {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-3px); }
+    }
+    @keyframes flicker-flame {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.2); opacity: 0.7; }
+    }
+    .text-overlay {
+      position: absolute;
+      top: 10%;
+      width: 90%;
+      text-align: center;
+      z-index: 10;
+      font-size: 1.5em;
+      color: #333;
+      font-weight: bold;
+    }
+    .text-sub {
+      position: absolute;
+      top: 18%;
+      width: 90%;
+      text-align: center;
+      z-index: 10;
+      font-size: 1.2em;
+      color: #333;
+      font-weight: normal;
+    }
+    .next-page {
+      position: absolute;
+      bottom: 5%;
+      font-size: 2em;
+      cursor: pointer;
+      z-index: 10;
+      animation: bounce 1s infinite alternate;
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+    @media (max-width: 600px) {
+      .layer-bottom { width: 180px; height: 60px; }
+      .layer-middle { width: 140px; height: 50px; }
+      .layer-top { width: 100px; height: 40px; }
+      .text-overlay { font-size: 1.2em; }
+      .text-sub { font-size: 1em; }
+    }
+    /* ---------- MEMORY LANE ---------- */
+    #page-memory {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      left: 0; top: 0;
+      background: linear-gradient(to right, #ffe6f0, #fff0e6);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow-x: hidden;
+      z-index: 20;
+      transition: opacity 1s ease;
+    }
+    #page-memory.hidden { opacity: 0 !important; }
+    #page-memory h1 {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 2em;
+      color: #ff6f91;
+      width: 100%;
+    }
+    .gallery {
+      position: relative;
+      width: 70%;
+      max-width: 1200px;
+      height: 600px;
+      margin: auto;
+      float: left;
+    }
+    .frame {
+      position: absolute;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      overflow: hidden;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .frame img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .frame:hover {
+      transform: scale(1.1) rotate(0deg);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      z-index: 10;
+    }
+    .caption {
+      padding: 8px 10px;
+      font-size: 0.9em;
+      color: #333;
+    }
+    /* Example random positions and rotations for 7 photos */
+    .frame:nth-child(1) { top: 20px; left: 20px; transform: rotate(-5deg); }
+    .frame:nth-child(2) { top: 50px; left: 250px; transform: rotate(7deg); }
+    .frame:nth-child(3) { top: 150px; left: 100px; transform: rotate(-10deg); }
+    .frame:nth-child(4) { top: 200px; left: 400px; transform: rotate(5deg); }
+    .frame:nth-child(5) { top: 300px; left: 50px; transform: rotate(3deg); }
+    .frame:nth-child(6) { top: 350px; left: 300px; transform: rotate(-8deg); }
+    .frame:nth-child(7) { top: 100px; left: 550px; transform: rotate(2deg); }
+    .flirty-text {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      font-size: 1.2em;
+      color: #ff4d94;
+      font-weight: bold;
+      max-width: 250px;
+      line-height: 1.4em;
+      text-align: right;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .read-more-btn {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      background: #ff4d94;
+      color: #fff;
+      font-weight: bold;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      text-align: center;
+    }
+    .read-more-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      background: #ff3385;
+    }
+    /* ---------- QUIZ ---------- */
+    #page-quiz {
+      position: absolute;
+      width: 100vw;
+      min-height: 100vh;
+      left: 0; top: 0;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      z-index: 30;
+    }
+    .sticky-note {
+      position: relative;
+      background: #fff8b3;
+      color: #444;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-size: 1rem;
+      padding: 15px 20px;
+      max-width: 500px;
+      margin-bottom: 20px;
+      border: 2px solid #fdd835;
+      border-radius: 10px;
+      box-shadow: 4px 6px 10px rgba(0,0,0,0.15);
+      transform: rotate(-2deg);
+      text-align: center;
+    }
+    .sticky-note::after {
+      content: "📌";
+      position: absolute;
+      top: -15px;
+      left: 10px;
+      font-size: 1.5rem;
+    }
+    .quiz-container {
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease;
+      transition: transform 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .question {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #444;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      background: #ff99ac;
+      color: white;
+      font-weight: bold;
+      transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
+    }
+    .options button:hover {
+      transform: scale(1.05);
+      background: #ff6f91;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.4s, visibility 0.4s;
+      z-index: 100;
+    }
+    .popup {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 400px;
+      animation: bounceIn 0.6s ease;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .popup p {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .popup button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .yes-btn {
+      background: #ff6f91;
+      color: white;
+    }
+    .no-btn {
+      background: #444;
+      color: white;
+    }
+    /* Agreement page */
+    .agreement {
+      display: none;
+      background: #fefcf6;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      font-family: 'Georgia', serif;
+      text-align: left;
+      animation: fadeIn 1s ease;
+    }
+    .agreement h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Cursive';
+      color: #222;
+    }
+    .agreement button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      background: #ff99ac;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .agreement button:hover {
+      background: #ff6f91;
+    }
+    /* ---------- FINAL SURPRISE ---------- */
+    #page-final {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #b8c6db);
+      z-index: 40;
+    }
+    #love-clock {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      color: #ff3366;
+      text-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
+      margin-bottom: 20px;
+    }
+    .note-final {
+      background: #fff8dc;
+      border: 2px solid #d4af37;
+      padding: 25px;
+      width: 320px;
+      min-height: 180px;
+      box-shadow: 4px 6px 12px rgba(0,0,0,0.2);
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      line-height: 1.8rem;
+      color: #5a3d2b;
+      transform: rotate(-2deg);
+      margin-bottom: 25px;
+    }
+    #surprise {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+    }
+    #surprise a {
+      color: #ff3366;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+    .heart {
+      position: absolute;
+      color: rgba(255, 51, 102, 0.5);
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+    /* ---------- MUSIC PLAYER (hidden) ---------- */
+    #bg-music {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>✨ Something special is on the way... ✨</h1>
-
-    <div class="countdown">
-      <div><span id="days">--</span><small>Days</small></div>
-      <div><span id="hours">--</span><small>Hours</small></div>
-      <div><span id="mins">--</span><small>Mins</small></div>
-      <div><span id="secs">--</span><small>Secs</small></div>
-    </div>
-
-    <a href="surprise.html" class="btn" id="enter-btn">Enter the Surprise 🌹</a>
-    <div class="note" id="cute-note">
-      💖 Click the music and wait for 15 seconds… <br>
-      because it’s your 15th Birthday, my love 🎂💕
-    </div>
-  </div>
-
-  <!-- Background Music -->
-  <audio loop id="birthday-music">
-    <source src="https://docs.google.com/uc?export=download&id=199xWC2_zJp6fVyryE1rQlFEZWA15RDE6" type="audio/mpeg">
+  <!-- MUSIC PLAYER (background, always running) -->
+  <audio id="bg-music" loop>
+    <source src="https://github.com/shuvroneel2009-cmd/Happy-Birthday-To-the-most-beautiful-girl-of-the-world/raw/refs/heads/main/Indila%20-%20Love%20Story%20(Piano%20Cover).ogg" type="audio/ogg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Play Button -->
-  <button id="play-btn">🔊 Play Music</button>
+  <!-- ---------- INDEX PAGE ---------- -->
+  <section id="page-index">
+    <div class="container">
+      <h1>✨ Something special is on the way... ✨</h1>
+      <div class="countdown">
+        <div><span id="days">--</span><small>Days</small></div>
+        <div><span id="hours">--</span><small>Hours</small></div>
+        <div><span id="mins">--</span><small>Mins</small></div>
+        <div><span id="secs">--</span><small>Secs</small></div>
+      </div>
+      <a class="btn" id="enter-btn">Enter the Surprise 🌹</a>
+      <div class="note" id="cute-note">
+        💖 Click the music and wait for 15 seconds… <br>
+        because it’s your 15th Birthday, my love 🎂💕
+      </div>
+    </div>
+    <button id="play-btn">🔊 Play Music</button>
+  </section>
 
-  <!-- Rose Petals -->
+  <!-- ---------- CAKE PAGE ---------- -->
+  <section id="page-cake" class="hidden">
+    <div class="text-overlay">Happy Birthday to my Suhasini! 🎉</div>
+    <div class="text-sub">Burn these 15 candles with your beautiful touch (which I can't get😒) 🔥✨</div>
+    <div class="cake-container">
+      <div class="cake-layer layer-bottom"></div>
+      <div class="cake-layer layer-middle"></div>
+      <div class="cake-layer layer-top" style="position:relative;">
+        <!-- Candles (15) -->
+        <div class="candle" style="left:-10px;"><div class="flame"></div></div>
+        <div class="candle" style="left:0px;"><div class="flame"></div></div>
+        <div class="candle" style="left:10px;"><div class="flame"></div></div>
+        <div class="candle" style="left:20px;"><div class="flame"></div></div>
+        <div class="candle" style="left:30px;"><div class="flame"></div></div>
+        <div class="candle" style="left:40px;"><div class="flame"></div></div>
+        <div class="candle" style="left:50px;"><div class="flame"></div></div>
+        <div class="candle" style="left:60px;"><div class="flame"></div></div>
+        <div class="candle" style="left:70px;"><div class="flame"></div></div>
+        <div class="candle" style="left:80px;"><div class="flame"></div></div>
+        <div class="candle" style="left:90px;"><div class="flame"></div></div>
+        <div class="candle" style="left:100px;"><div class="flame"></div></div>
+        <div class="candle" style="left:110px;"><div class="flame"></div></div>
+        <div class="candle" style="left:120px;"><div class="flame"></div></div>
+        <div class="candle" style="left:130px;"><div class="flame"></div></div>
+      </div>
+    </div>
+    <div class="next-page" id="cake-next">&#x27A1;</div>
+  </section>
+
+  <!-- ---------- MEMORY LANE ---------- -->
+  <section id="page-memory" class="hidden">
+    <h1>Memory Lane</h1>
+    <div class="gallery">
+      <div class="frame">
+        <a href="https://ibb.co.com/mYwFKgJ" target="_blank">
+          <img src="https://i.ibb.co.com/sDGJ4zj/69af4cc3-3a0e-47e1-9a26-640722d8065c.jpg" alt="Memory 1">
+        </a>
+        <div class="caption">Prettiest girl of world thinking about me 💕</div>
+      </div>
+      <div class="frame">
+        <a href="https://ibb.co.com/HT15KSzv" target="_blank">
+          <img src="https://i.ibb.co.com/zVjqmMRc/19249d34-9800-443a-8140-b0524c1679ab.jpg" alt="Memory 2">
+        </a>
+        <div class="caption">That girl in class 7</div>
+      </div>
+      <div class="frame">
+        <a href="https://ibb.co.com/4gPsgtys" target="_blank">
+          <img src="https://i.ibb.co.com/7N2gNCcg/623a6903-e260-48f0-bd6c-5e12c600436f.jpg" alt="Memory 3">
+        </a>
+        <div class="caption">That Beauty in Sharee</div>
+      </div>
+      <div class="frame">
+        <a href="https://ibb.co.com/zVhSr9k0" target="_blank">
+          <img src="https://i.ibb.co.com/SwXKPYL9/06fa6e68-60c2-4786-8eb1-0892d6f5dd63.jpg" alt="Memory 4">
+        </a>
+        <div class="caption">Seeming like my bby and her mother playing together</div>
+      </div>
+      <div class="frame">
+        <a href="https://ibb.co.com/27C6SG1m" target="_blank">
+          <img src="https://i.ibb.co.com/3yjsvg9G/17934151-5ac7-4dc6-88fe-872ec640b8e5.jpg" alt="Memory 5">
+        </a>
+        <div class="caption">Your smile lights up everything ✨</div>
+      </div>
+      <div class="frame">
+        <a href="https://postimg.cc/xJFYWVJ8" target="_blank">
+          <img src="https://i.postimg.cc/Y0t9Lpt6/9012cc2d-a5be-4a7d-b8ed-8006cc44e18c.jpg" alt="Memory 6">
+        </a>
+        <div class="caption">Can’t wait to make more memories.. ❤️</div>
+      </div>
+      <div class="frame">
+        <a href="https://postimg.cc/30Rjxmx9" target="_blank">
+          <img src="https://i.postimg.cc/prQskBbN/3c744577-c37c-4c4b-b705-cebeaa976306.jpg" alt="Memory 7">
+        </a>
+        <div class="caption">Sahiba..... 🌹</div>
+      </div>
+    </div>
+    <div class="flirty-text">
+      What can I do?? <br>
+      What you are now watching is not the full thing!......
+    </div>
+    <div class="read-more-btn" id="memory-next">Read More</div>
+  </section>
+
+  <!-- ---------- QUIZ PAGE ---------- -->
+  <section id="page-quiz" class="hidden">
+    <div>
+      <div class="sticky-note">
+        📌 This survey is for your friends, Shreoshi 🌸 You can check it too,
+        but let them complete it first. At least 4/5 of your friends should finish this survey about you 💕
+      </div>
+      <div class="quiz-container" id="quizBox">
+        <div class="question" id="questionText"></div>
+        <div class="options" id="optionsBox"></div>
+      </div>
+    </div>
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup">
+        <p id="popupText"></p>
+        <div id="popupButtons"></div>
+      </div>
+    </div>
+    <div class="agreement" id="agreementPage">
+      <h2>📜 Official Agreement 💌</h2>
+      <p id="agreementText">
+        ( According to this survey you think Shreo is one of the most lovely and beautiful girls in this world right?
+        Her smile can distract anyone. And until my death, me, Prottoy have taken the duty to keep her smile always alive.
+        But I can't do it alone. You who are taking this survey are also a very important part of her life.
+        So you have to sign this agreement that you will always help Shreoshi in her every ups and downs in her life.
+        This will help me to complete my duty ❤️✨ Please do it ok? Plzzzzzzzzzzzzzzz )
+      </p>
+      <button id="quiz-next">I Agree ✅</button>
+    </div>
+  </section>
+
+  <!-- ---------- FINAL SURPRISE ---------- -->
+  <section id="page-final" class="hidden">
+    <div id="love-clock"></div>
+    <div class="note-final">
+      This woman so beautiful that this screen can't render her beauty...
+
+      💌 "You’re not just in my heart… <br>
+      You *are* my heart. <br><br>
+      Can I borrow your smile forever? 😘"
+    </div>
+    <div id="surprise">Check at 3 AM 😉</div>
+  </section>
+
+  <!-- JS LOGIC FOR MULTI-PAGE & FUNCTIONALITY -->
   <script>
+    // ---------- MUSIC PLAYER ----------
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.volume = 0.7;
+    // Try to autoplay, fallback to user click
+    function tryPlayMusic() {
+      bgMusic.play().catch(() => {
+        document.body.addEventListener('click', () => bgMusic.play(), { once: true });
+      });
+    }
+    tryPlayMusic();
+
+    // ---------- PAGE CONTROL ----------
+    // Page ID order
+    const pages = ['page-index', 'page-cake', 'page-memory', 'page-quiz', 'page-final'];
+    let currentPage = 0;
+    function showPage(idx) {
+      pages.forEach((pg, i) => {
+        document.getElementById(pg).classList.toggle('hidden', i !== idx);
+      });
+      currentPage = idx;
+    }
+    showPage(0); // Start at index
+
+    // ---------- INDEX PAGE LOGIC ----------
+    // Petals animation
     function createPetal(){
       const petal = document.createElement("div");
       petal.classList.add("petal");
@@ -167,14 +752,17 @@
       petal.style.transform = "scale("+(0.5+Math.random())+")";
       setTimeout(() => petal.remove(), 8000);
     }
-    setInterval(createPetal, 400);
+    let petalInterval = setInterval(() => {
+      if (currentPage === 0) createPetal();
+    }, 400);
 
     // Countdown Timer
     const targetDate = new Date("September 23, 2025 00:00:00 GMT+0600").getTime();
     const timer = setInterval(()=>{
+      if (currentPage !== 0) return;
       const now = new Date().getTime();
       const distance = targetDate - now;
-      if (distance < 0){ 
+      if (distance < 0){
         document.querySelector(".countdown").innerHTML = "🎉 The surprise is ready! 🎉";
         clearInterval(timer);
         return;
@@ -186,24 +774,202 @@
     }, 1000);
 
     // Music Play Button + Unlock Enter
-    const music = document.getElementById('birthday-music');
     const playBtn = document.getElementById('play-btn');
     const enterBtn = document.getElementById('enter-btn');
     const cuteNote = document.getElementById('cute-note');
-
+    let unlocked = false;
     playBtn.addEventListener('click', () => {
-      music.play().catch(err => console.log("Playback error:", err));
-      playBtn.style.display = 'none'; // hide play button
-
-      // vanish the note when music is played
+      bgMusic.play().catch(err => console.log("Playback error:", err));
+      playBtn.style.display = 'none';
       cuteNote.classList.add('vanish');
       setTimeout(() => { cuteNote.style.display = 'none'; }, 600);
-
-      // unlock Enter button after 15 seconds
       setTimeout(() => {
         enterBtn.classList.add('active');
+        unlocked = true;
       }, 15000);
     });
+    enterBtn.addEventListener('click', (e) => {
+      if (!unlocked) return;
+      showPage(1); // Go to cake
+    });
+
+    // ---------- CAKE PAGE LOGIC ----------
+    let candlesBlown = 0;
+    // Cake: Blowing candles
+    document.querySelectorAll('#page-cake .candle').forEach(candle => {
+      candle.addEventListener('click', function(){
+        const flame = this.querySelector('.flame');
+        if (flame && flame.style.display !== 'none') {
+          flame.style.display = 'none';
+          candlesBlown++;
+          // When 15 candles blown, go to memory page
+          if (candlesBlown === 15) {
+            setTimeout(() => showPage(2), 800);
+          }
+        }
+      });
+    });
+    // Cake manual next arrow for backup (if user wants)
+    document.getElementById('cake-next').addEventListener('click', () => {
+      showPage(2);
+    });
+
+    // ---------- MEMORY LANE LOGIC ----------
+    document.getElementById('memory-next').addEventListener('click', () => {
+      // Fade out animation
+      document.getElementById('page-memory').style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById('page-memory').style.opacity = 1;
+        showPage(3);
+      }, 1000);
+    });
+
+    // ---------- QUIZ LOGIC ----------
+    // Quiz questions
+    const questions = [
+      {
+        q: "🌸 What do you think what is the most beautiful thing of Shreoshi? 🥰",
+        options: ["Her Smile 😍","Her Face 😊","Her Eyes 👀","Her Lips 💋"],
+        correct: 0,
+        wrongMsg: "🐴 Yea she has all of this but one thing is very special. Wanna Try Again?"
+      },
+      {
+        q: "🤔 Shreooo is a girl of-",
+        options: ["Beauty ✨","Madness 😜","Fight 🥊","Sadness 😢"],
+        correct: 1,
+        wrongMsg: "💌 Actually she has all of these but I love her madness the most 😘 Don't you love it too? Try Again"
+      },
+      {
+        q: "🌷 How Does Shreo look like -",
+        options: ["Cutest Tomato 🍅","Shakcunni 😈","Miss World 2025 👑","All of the above 💖"],
+        correct: 0,
+        wrongMsg: "😏 Hehe you thought Shreo looks like Miss World 2025 right? 🙄 Chiiii! She’s much more beautiful ✨. Do you agree? 💕 Try Again"
+      },
+      {
+        q: "😂 What does Shreoo love to do most?",
+        options: ["Cry 😢","Smiling 😁","Making Prottoy mad 🤯","Cooking 🍳"],
+        correct: 2,
+        wrongMsg: "I think she makes you mad also ❤️. It is lovely, isn't it? 😏 Try Again"
+      },
+      {
+        q: "💖 Shreoo is -",
+        options: ["The most beautiful girl 👧","The most beautiful soul 🌸","The most beautiful & innocent girl 👼","The most beautiful & childish soul 🐣"],
+        correct: 3,
+        wrongMsg: "✨ She is not just beautiful outside, I’ve seen her soul 🌈. It looks like heaven ❤️. Do you think she is very innocent? Try Again😍"
+      },
+      {
+        q: "👑 Shreo likes the most -",
+        options: ["Her Mother 👩","Her Father 👨","Jhumka 💎","Prottoy 😉"],
+        correct: 1,
+        wrongMsg: "You thought it was me? 😂 Maybe… But I’m grateful to her father for raising this princess 👸. Wanna try again? 💖"
+      },
+      {
+        q: "💞 Shreoo is my -",
+        options: ["Radha 🌹","Petni 👻","Wife 💍","Lifeline ❤️"],
+        correct: 3,
+        wrongMsg: "🤭 Honestly, she’s my bestfriend, wife, 🌚 partner, Radha, teacher, lifeline… list goes on 💕. But to you, she’s one of the most trustable people, right? 🤔"
+      }
+    ];
+    let currentQ = 0;
+    const quizBox = document.getElementById("quizBox");
+    const questionText = document.getElementById("questionText");
+    const optionsBox = document.getElementById("optionsBox");
+    const popupOverlay = document.getElementById("popupOverlay");
+    const popupText = document.getElementById("popupText");
+    const popupButtons = document.getElementById("popupButtons");
+    const agreementPage = document.getElementById("agreementPage");
+
+    function loadQuestion() {
+      if (currentQ < questions.length) {
+        const qData = questions[currentQ];
+        questionText.textContent = qData.q;
+        optionsBox.innerHTML = "";
+        qData.options.forEach((opt, i) => {
+          const btn = document.createElement("button");
+          btn.textContent = opt;
+          btn.onclick = () => checkAnswer(i);
+          optionsBox.appendChild(btn);
+        });
+        quizBox.style.display = "block";
+        agreementPage.style.display = "none";
+      } else {
+        quizBox.style.display = "none";
+        agreementPage.style.display = "block";
+      }
+    }
+    function checkAnswer(selected) {
+      const qData = questions[currentQ];
+      if (selected === qData.correct) {
+        currentQ++;
+        loadQuestion();
+      } else {
+        showPopup(qData.wrongMsg);
+      }
+    }
+    function showPopup(msg) {
+      popupText.textContent = msg;
+      popupButtons.innerHTML = "";
+      const yesBtn = document.createElement("button");
+      yesBtn.textContent = "Yes ✅";
+      yesBtn.className = "yes-btn";
+      yesBtn.onclick = () => {
+        popupOverlay.style.visibility = "hidden";
+        popupOverlay.style.opacity = "0";
+      };
+      const noBtn = document.createElement("button");
+      noBtn.textContent = "No ❌";
+      noBtn.className = "no-btn";
+      noBtn.onclick = () => {
+        quizBox.style.transform = "scale(1.2)";
+        setTimeout(() => quizBox.style.transform = "scale(1)", 800);
+      };
+      popupButtons.appendChild(yesBtn);
+      popupButtons.appendChild(noBtn);
+      popupOverlay.style.visibility = "visible";
+      popupOverlay.style.opacity = "1";
+    }
+    document.getElementById("quiz-next").onclick = function() {
+      showPage(4); // Final surprise
+    };
+    // Load first quiz question
+    loadQuestion();
+
+    // ---------- FINAL SURPRISE LOGIC ----------
+    // Love clock
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("love-clock").textContent =
+        now.toLocaleTimeString("en-US", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Surprise reveal logic
+    const releaseDate = new Date("2025-09-23T03:00:00+06:00");
+    const surpriseDiv = document.getElementById("surprise");
+    function checkSurprise() {
+      if (currentPage !== 4) return;
+      const now = new Date();
+      if (now >= releaseDate) {
+        surpriseDiv.innerHTML = `<a href="https://www.youtube.com/your-song-link" target="_blank">💖 Your Special Song 💖</a>`;
+      }
+    }
+    setInterval(checkSurprise, 1000);
+    checkSurprise();
+
+    // Floating hearts animation
+    function createHeart() {
+      if (currentPage !== 4) return;
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (15 + Math.random() * 20) + "px";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 800);
   </script>
 </body>
 </html>
