@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Final Surprise</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #b8c6db);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Love style clock */
+    #love-clock {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      color: #ff3366;
+      text-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
+      margin-bottom: 20px;
+    }
+
+    /* Sticky note style */
+    .note {
+      background: #fff8dc;
+      border: 2px solid #d4af37;
+      padding: 25px;
+      width: 320px;
+      min-height: 180px;
+      box-shadow: 4px 6px 12px rgba(0,0,0,0.2);
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      line-height: 1.8rem;
+      color: #5a3d2b;
+      transform: rotate(-2deg);
+      margin-bottom: 25px;
+    }
+
+    /* Surprise reveal area */
+    #surprise {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #surprise a {
+      color: #ff3366;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+
+    /* Floating hearts animation */
+    .heart {
+      position: absolute;
+      color: rgba(255, 51, 102, 0.5);
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Love Clock -->
+  <div id="love-clock"></div>
+
+  <!-- Fancy Sticky Note -->
+  <div class="note">
+     This woman so beautiful that this screen can't render her beauty...
+     
+    💌 "You’re not just in my heart… <br>
+    You *are* my heart. <br><br>
+    Can I borrow your smile forever? 😘"
+  </div>
+
+  <!-- Surprise Section -->
+  <div id="surprise">Check at 3 AM 😉</div>
+
+  <script>
+    // Clock
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("love-clock").textContent = 
+        now.toLocaleTimeString("en-US", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Surprise reveal logic
+    const releaseDate = new Date("2025-09-23T03:00:00+06:00"); // BD time
+    const surpriseDiv = document.getElementById("surprise");
+
+    function checkSurprise() {
+      const now = new Date();
+      if (now >= releaseDate) {
+        surpriseDiv.innerHTML = `<a href="https://www.youtube.com/your-song-link" target="_blank">💖 Your Special Song 💖</a>`;
+      }
+    }
+    setInterval(checkSurprise, 1000);
+    checkSurprise();
+
+    // Floating hearts generator
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (15 + Math.random() * 20) + "px";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 800);
+  </script>
+</body>
+</html>

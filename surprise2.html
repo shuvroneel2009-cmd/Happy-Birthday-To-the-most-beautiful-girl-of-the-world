@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Cake</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to top, #fceabb, #f8b500);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .cake-container {
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse; /* Fix upside-down layers */
+        align-items: center;
+        z-index: 1;
+    }
+
+    /* Cake layers */
+    .cake-layer {
+        border-radius: 20px;
+        margin: 5px 0;
+        position: relative;
+    }
+
+    .layer-bottom {
+        width: 250px;
+        height: 80px;
+        background: #d2691e; /* chocolate */
+    }
+
+    .layer-middle {
+        width: 180px;
+        height: 70px;
+        background: #ffb6c1; /* pink */
+    }
+
+    .layer-top {
+        width: 120px;
+        height: 60px;
+        background: #fffacd; /* light yellow */
+    }
+
+    /* Candles */
+    .candle {
+        position: absolute;
+        top: -40px;
+        width: 10px;
+        height: 40px;
+        background: #ff0000;
+        border-radius: 2px;
+        animation: flicker 1s infinite alternate;
+    }
+
+    .flame {
+        position: absolute;
+        top: -15px;
+        left: -2px;
+        width: 14px;
+        height: 14px;
+        background: radial-gradient(circle, yellow, orange, red);
+        border-radius: 50%;
+        animation: flicker-flame 0.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-3px); }
+    }
+
+    @keyframes flicker-flame {
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    /* Text on top */
+    .text-overlay {
+        position: absolute;
+        top: 10%;
+        width: 90%;
+        text-align: center;
+        z-index: 10;
+        font-size: 1.5em;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .text-sub {
+        position: absolute;
+        top: 18%;
+        width: 90%;
+        text-align: center;
+        z-index: 10;
+        font-size: 1.2em;
+        color: #333;
+        font-weight: normal;
+    }
+
+    /* Next page emoji */
+    .next-page {
+        position: absolute;
+        bottom: 5%;
+        font-size: 2em;
+        cursor: pointer;
+        z-index: 10;
+        animation: bounce 1s infinite alternate;
+    }
+
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-10px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+        .layer-bottom { width: 180px; height: 60px; }
+        .layer-middle { width: 140px; height: 50px; }
+        .layer-top { width: 100px; height: 40px; }
+        .text-overlay { font-size: 1.2em; }
+        .text-sub { font-size: 1em; }
+    }
+</style>
+</head>
+<body>
+
+<div class="text-overlay">Happy Birthday to my Suhasini! 🎉</div>
+<div class="text-sub">Burn these 15 candles with your beautiful touch (which I can't get😒) 🔥✨</div>
+
+<div class="cake-container">
+    <div class="cake-layer layer-bottom"></div>
+    <div class="cake-layer layer-middle"></div>
+    <div class="cake-layer layer-top">
+        <!-- Candles -->
+        <div class="candle" style="left:-10px;"><div class="flame"></div></div>
+        <div class="candle" style="left:0px;"><div class="flame"></div></div>
+        <div class="candle" style="left:10px;"><div class="flame"></div></div>
+        <div class="candle" style="left:20px;"><div class="flame"></div></div>
+        <div class="candle" style="left:30px;"><div class="flame"></div></div>
+        <div class="candle" style="left:40px;"><div class="flame"></div></div>
+        <div class="candle" style="left:50px;"><div class="flame"></div></div>
+        <div class="candle" style="left:60px;"><div class="flame"></div></div>
+        <div class="candle" style="left:70px;"><div class="flame"></div></div>
+        <div class="candle" style="left:80px;"><div class="flame"></div></div>
+        <div class="candle" style="left:90px;"><div class="flame"></div></div>
+        <div class="candle" style="left:100px;"><div class="flame"></div></div>
+        <div class="candle" style="left:110px;"><div class="flame"></div></div>
+        <div class="candle" style="left:120px;"><div class="flame"></div></div>
+        <div class="candle" style="left:130px;"><div class="flame"></div></div>
+    </div>
+</div>
+
+<div class="next-page" onclick="goNext()">➡️</div>
+
+<script>
+    // Select all candles
+    const candles = document.querySelectorAll('.candle');
+    let blown = 0;
+
+    candles.forEach(candle => {
+        candle.addEventListener('click', () => {
+            // Hide the flame
+            candle.querySelector('.flame').style.display = 'none';
+            blown++;
+
+            // Check if all candles are blown
+            if (blown === candles.length) {
+                // Redirect automatically to homepage 4
+                window.location.href = 'surprise3.html'; // <-- change this to your 4th page file name
+            }
+        });
+    });
+
+    
+</script>
+
+</script>
+
+</body>
+</html>

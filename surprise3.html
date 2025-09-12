@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Lane</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ffe6f0, #fff0e6);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+    transition: opacity 1s ease;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 2em;
+    color: #ff6f91;
+    width: 100%;
+  }
+
+  .gallery {
+    position: relative;
+    width: 70%; /* shrink a bit to leave space for text */
+    max-width: 1200px;
+    height: 600px;
+    margin: auto;
+    float: left;
+  }
+
+  .frame {
+    position: absolute;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .frame img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .frame:hover {
+    transform: scale(1.1) rotate(0deg);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    z-index: 10;
+  }
+
+  .caption {
+    padding: 8px 10px;
+    font-size: 0.9em;
+    color: #333;
+  }
+
+  /* Example random positions and rotations for 7 photos */
+  .frame:nth-child(1) { top: 20px; left: 20px; transform: rotate(-5deg); }
+  .frame:nth-child(2) { top: 50px; left: 250px; transform: rotate(7deg); }
+  .frame:nth-child(3) { top: 150px; left: 100px; transform: rotate(-10deg); }
+  .frame:nth-child(4) { top: 200px; left: 400px; transform: rotate(5deg); }
+  .frame:nth-child(5) { top: 300px; left: 50px; transform: rotate(3deg); }
+  .frame:nth-child(6) { top: 350px; left: 300px; transform: rotate(-8deg); }
+  .frame:nth-child(7) { top: 100px; left: 550px; transform: rotate(2deg); }
+
+  /* Flirty text on the right */
+  .flirty-text {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #ff4d94;
+    font-weight: bold;
+    max-width: 250px;
+    line-height: 1.4em;
+    text-align: right;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  /* Read More button styling */
+  .read-more-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background: #ff4d94;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    text-align: center;
+  }
+
+  .read-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    background: #ff3385;
+  }
+</style>
+</head>
+<body>
+
+<h1>Memory Lane</h1>
+
+<div class="gallery">
+  <div class="frame">
+    <a href="https://ibb.co.com/mYwFKgJ" target="_blank">
+      <img src="https://i.ibb.co.com/sDGJ4zj/69af4cc3-3a0e-47e1-9a26-640722d8065c.jpg" alt="Memory 1">
+    </a>
+    <div class="caption">Prettiest girl of world thinking about me 💕</div>
+  </div>
+  <div class="frame">
+    <a href="https://ibb.co.com/HT15KSzv" target="_blank">
+      <img src="https://i.ibb.co.com/zVjqmMRc/19249d34-9800-443a-8140-b0524c1679ab.jpg" alt="Memory 2">
+    </a>
+    <div class="caption">That girl in class 7</div>
+  </div>
+  <div class="frame">
+    <a href="https://ibb.co.com/4gPsgtys" target="_blank">
+      <img src="https://i.ibb.co.com/7N2gNCcg/623a6903-e260-48f0-bd6c-5e12c600436f.jpg" alt="Memory 3">
+    </a>
+    <div class="caption">That Beauty in Sharee</div>
+  </div>
+  <div class="frame">
+    <a href="https://ibb.co.com/zVhSr9k0" target="_blank">
+      <img src="https://i.ibb.co.com/SwXKPYL9/06fa6e68-60c2-4786-8eb1-0892d6f5dd63.jpg" alt="Memory 4">
+    </a>
+    <div class="caption">Seeming like my bby and her mother playing together</div>
+  </div>
+  <div class="frame">
+    <a href="https://ibb.co.com/27C6SG1m" target="_blank">
+      <img src="https://i.ibb.co.com/3yjsvg9G/17934151-5ac7-4dc6-88fe-872ec640b8e5.jpg" alt="Memory 5">
+    </a>
+    <div class="caption">Your smile lights up everything ✨</div>
+  </div>
+  <div class="frame">
+    <a href="https://postimg.cc/xJFYWVJ8" target="_blank">
+      <img src="https://i.postimg.cc/Y0t9Lpt6/9012cc2d-a5be-4a7d-b8ed-8006cc44e18c.jpg" alt="Memory 6">
+    </a>
+    <div class="caption">Can’t wait to make more memories.. ❤️</div>
+  </div>
+  <div class="frame">
+    <a href="https://postimg.cc/30Rjxmx9" target="_blank">
+      <img src="https://i.postimg.cc/prQskBbN/3c744577-c37c-4c4b-b705-cebeaa976306.jpg" alt="Memory 7">
+    </a>
+    <div class="caption">Sahiba..... 🌹</div>
+  </div>
+</div>
+
+<div class="flirty-text">
+  What can I do?? <br>
+  What you are now watching is not the full thing!......
+</div>
+
+<div class="read-more-btn" onclick="goNext()">
+  Read More
+</div>
+
+<script>
+  function goNext() {
+    document.body.style.opacity = 0; // fade out
+    setTimeout(() => {
+      window.location.href = "surprise4.html";
+    }, 1000); // wait 1s for fade-out
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Shreoshi 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffd6e8, #ff99cc);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      opacity: 0; /* For fade-in on load */
+      transition: opacity 1s;
+    }
+
+    .container {
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0.2em 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      font-size: 1.5em;
+      font-weight: 400;
+      margin-top: 0.5em;
+    }
+
+    /* Falling rose petals */
+    .petal {
+      position: absolute;
+      top: -50px;
+      font-size: 1.5em;
+      animation: fall 6s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Button styling */
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #ff4e78, #ff6584);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <iframe src="https://docs.google.com/uc?export=download&id=199xWC2_zJp6fVyryE1rQlFEZWA15RDE6" 
+        allow="autoplay" 
+        style="display:none">
+</iframe>
+
+
+
+  <div class="container">
+    <h1>শুভ জন্মদিন, Shreoshi! 🌹</h1>
+    <h2>Happy 15th Birthday — A little surprise made just for you 🎂</h2>
+
+    <!-- Go Next button -->
+    <div style="margin-top: 40px;">
+      <button class="btn" onclick="goNext()">Go Next ➡️</button>
+    </div>
+  </div>
+
+  <!-- Rose petals -->
+  <script>
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.innerHTML = '🌹';
+      petal.style.left = Math.random() * window.innerWidth + 'px';
+      petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.body.appendChild(petal);
+      setTimeout(() => { petal.remove(); }, 7000);
+    }
+    setInterval(createPetal, 400);
+
+    // Fade-in on page load
+    window.onload = () => {
+      document.body.style.opacity = 1;
+    };
+
+    // Go Next function with fade-out transition
+    function goNext() {
+      document.body.style.opacity = 0; // fade out
+      setTimeout(() => {
+        window.location.href = "surprise2.html";
+      }, 1000); // wait 1s for fade-out
+    }
+  </script>
+  
+</body>
+</html>
