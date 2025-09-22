@@ -312,44 +312,52 @@
 
 /* 📱 Mobile Responsive Fix */
 /* 📱 Mobile Responsive Fix */
+/* 📱 Mobile Responsive Fix */
 @media (max-width: 600px) {
   .gallery {
     width: 100%;
-    height: auto;             /* let height grow naturally */
+    height: auto;
     float: none;              /* reset float */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
     margin: 0 auto;
+    position: relative;
   }
 
   .frame {
-    position: relative;       /* reset absolute */
-    transform: rotate(0deg);  /* straighten images */
-    margin: 10px;
+    position: relative !important;   /* override absolute */
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;      /* remove rotation */
+    margin: 10px auto;
   }
 
   .frame img {
-    width: 140px;   /* smaller images for phone */
+    width: 140px;
     height: 140px;
+    border-radius: 12px;
   }
 
   .caption {
     font-size: 0.8em;
+    text-align: center;
   }
 
-  /* Move flirty text below gallery on phones */
+  /* Move flirty text below the gallery */
   .flirty-text {
-    position: relative;
-    top: auto;
-    right: auto;
-    transform: none;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
     text-align: center;
     margin: 20px auto;
     max-width: 90%;
+    background: rgba(255, 255, 255, 0.85);
   }
 }
+
 
 
     .flirty-text {
@@ -1017,4 +1025,5 @@
   </script>
 </body>
 </html>
+
 
