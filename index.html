@@ -301,13 +301,43 @@
       color: #333;
     }
     /* Example random positions and rotations for 7 photos */
-    .frame:nth-child(1) { top: 20px; left: 20px; transform: rotate(-5deg); }
-    .frame:nth-child(2) { top: 50px; left: 250px; transform: rotate(7deg); }
-    .frame:nth-child(3) { top: 150px; left: 100px; transform: rotate(-10deg); }
-    .frame:nth-child(4) { top: 200px; left: 400px; transform: rotate(5deg); }
-    .frame:nth-child(5) { top: 300px; left: 50px; transform: rotate(3deg); }
-    .frame:nth-child(6) { top: 350px; left: 300px; transform: rotate(-8deg); }
-    .frame:nth-child(7) { top: 100px; left: 550px; transform: rotate(2deg); }
+    /* Desktop (keep your existing positions) */
+.frame:nth-child(1) { top: 20px; left: 20px; transform: rotate(-5deg); }
+.frame:nth-child(2) { top: 50px; left: 250px; transform: rotate(7deg); }
+.frame:nth-child(3) { top: 150px; left: 100px; transform: rotate(-10deg); }
+.frame:nth-child(4) { top: 200px; left: 400px; transform: rotate(5deg); }
+.frame:nth-child(5) { top: 300px; left: 50px; transform: rotate(3deg); }
+.frame:nth-child(6) { top: 350px; left: 300px; transform: rotate(-8deg); }
+.frame:nth-child(7) { top: 100px; left: 550px; transform: rotate(2deg); }
+
+/* 📱 Mobile Responsive Fix */
+@media (max-width: 600px) {
+  .gallery {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+  }
+
+  .frame {
+    position: relative;   /* reset absolute */
+    transform: rotate(0deg);  /* make them straight for clarity */
+    margin: 10px auto;
+  }
+
+  .frame img {
+    width: 140px;  /* smaller images for phone */
+    height: 140px;
+  }
+
+  .caption {
+    font-size: 0.8em;
+  }
+}
+
     .flirty-text {
       position: absolute;
       top: 50%;
@@ -693,7 +723,7 @@
       <h2>📜 Official Agreement 💌</h2>
       <p id="agreementText">
         ( According to this survey you think Shreo is one of the most lovely and beautiful girls in this world right?
-        Her smile can distract anyone. And until my death, me, Prottoy have taken the duty to keep her smile always alive.
+        Her smile can distract anyone. And until my death, me, Prottoy has taken the duty to keep her smile always alive.
         But I can't do it alone. You who are taking this survey are also a very important part of her life.
         So you have to sign this agreement that you will always help Shreoshi in her every ups and downs in her life.
         This will help me to complete my duty ❤️✨ Please do it ok? Plzzzzzzzzzzzzzzz )
@@ -708,9 +738,9 @@
     <div class="note-final">
       This woman so beautiful that this screen can't render her beauty...
 
-      💌 "You’re not just in my heart… <br>
+      💌 "Shreo You’re not just in my heart… <br>
       You *are* my heart. <br><br>
-      Can I borrow your smile forever? 😘"
+      Can I borrow your smile forever mam? 😘"
     </div>
     <div id="surprise">Check at 3 AM 😉</div>
   </section>
