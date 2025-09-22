@@ -612,6 +612,41 @@
     #bg-music {
       display: none !important;
     }
+/* 📱 Mobile Scattered Layout */
+@media (max-width: 600px) {
+  .frame {
+    position: absolute;
+    transform: none;
+    width: 120px;
+    height: 120px;
+  }
+
+  .frame:nth-child(1) { top: 10px; left: 20px; transform: rotate(-5deg); }
+  .frame:nth-child(2) { top: 130px; left: 160px; transform: rotate(7deg); }
+  .frame:nth-child(3) { top: 250px; left: 40px; transform: rotate(-8deg); }
+  .frame:nth-child(4) { top: 370px; left: 170px; transform: rotate(5deg); }
+  .frame:nth-child(5) { top: 490px; left: 20px; transform: rotate(3deg); }
+  .frame:nth-child(6) { top: 610px; left: 150px; transform: rotate(-6deg); }
+  .frame:nth-child(7) { top: 730px; left: 60px; transform: rotate(4deg); }
+
+  .gallery {
+    position: relative;
+    width: 100%;
+    height: 900px; /* adjust based on number of frames */
+  }
+
+  .frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .caption {
+    font-size: 0.7rem;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1025,5 +1060,6 @@
   </script>
 </body>
 </html>
+
 
 
