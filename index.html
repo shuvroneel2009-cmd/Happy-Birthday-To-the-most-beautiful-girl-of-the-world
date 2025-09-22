@@ -266,42 +266,43 @@
       color: #ff6f91;
       width: 100%;
     }
-    .gallery {
-      position: relative;
-      width: 70%;
-      max-width: 1200px;
-      height: 600px;
-      margin: auto;
-      float: left;
-    }
-    .frame {
-      position: absolute;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      overflow: hidden;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .frame img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-    }
-    .frame:hover {
-      transform: scale(1.1) rotate(0deg);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-      z-index: 10;
-    }
-    .caption {
-      padding: 8px 10px;
-      font-size: 0.9em;
-      color: #333;
-    }
-    /* Example random positions and rotations for 7 photos */
-    /* Desktop (keep your existing positions) */
+   .gallery {
+  position: relative;
+  width: 70%;
+  max-width: 1200px;
+  height: 600px;
+  margin: auto;
+  float: left;
+}
+
+.frame {
+  position: absolute;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.frame img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.frame:hover {
+  transform: scale(1.1) rotate(0deg);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  z-index: 10;
+}
+.caption {
+  padding: 8px 10px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+/* Desktop scattered positions */
 .frame:nth-child(1) { top: 20px; left: 20px; transform: rotate(-5deg); }
 .frame:nth-child(2) { top: 50px; left: 250px; transform: rotate(7deg); }
 .frame:nth-child(3) { top: 150px; left: 100px; transform: rotate(-10deg); }
@@ -310,40 +311,56 @@
 .frame:nth-child(6) { top: 350px; left: 300px; transform: rotate(-8deg); }
 .frame:nth-child(7) { top: 100px; left: 550px; transform: rotate(2deg); }
 
-/* 📱 Mobile Responsive Fix */
-/* 📱 Mobile Responsive Fix */
-/* 📱 Mobile Responsive Fix */
+/* 📱 Mobile scattered but compact */
 @media (max-width: 600px) {
   .gallery {
     width: 100%;
-    height: auto;
-    float: none;              /* reset float */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin: 0 auto;
-    position: relative;
+    height: 800px; /* adjusted height */
+    margin: auto;
   }
-
   .frame {
-    position: relative !important;   /* override absolute */
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;      /* remove rotation */
-    margin: 10px auto;
+    width: 120px;
+    height: 120px;
   }
-
   .frame img {
-    width: 140px;
-    height: 140px;
+    width: 100%;
+    height: 100%;
     border-radius: 12px;
   }
-
   .caption {
-    font-size: 0.8em;
+    font-size: 0.7rem;
+  }
+
+  /* Adjusted scattered positions */
+  .frame:nth-child(1) { top: 10px; left: 20px; transform: rotate(-5deg); }
+  .frame:nth-child(2) { top: 130px; left: 160px; transform: rotate(7deg); }
+  .frame:nth-child(3) { top: 250px; left: 40px; transform: rotate(-8deg); }
+  .frame:nth-child(4) { top: 370px; left: 170px; transform: rotate(5deg); }
+  .frame:nth-child(5) { top: 490px; left: 20px; transform: rotate(3deg); }
+  .frame:nth-child(6) { top: 610px; left: 150px; transform: rotate(-6deg); }
+  .frame:nth-child(7) { top: 730px; left: 60px; transform: rotate(4deg); }
+
+  /* Flirty text below gallery */
+  .flirty-text {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 90%;
+  }
+
+  .read-more-btn {
+    position: relative;
+    margin: 20px auto;
+    right: auto;
+    bottom: auto;
+    display: block;
     text-align: center;
   }
+}
+
 
   /* Move flirty text below the gallery */
   .flirty-text {
@@ -1060,6 +1077,7 @@
   </script>
 </body>
 </html>
+
 
 
 
